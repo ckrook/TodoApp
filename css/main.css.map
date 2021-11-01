@@ -1,0 +1,18 @@
+{
+    "version": 3,
+    "mappings": "AEMA,AAAA,IAAI,CAAC;EACH,UAAU,EAAE,oBAAoB;EAChC,aAAa,EAAE,oBAAoB;EACnC,eAAe,EAAE,oBAAoB;EACrC,kBAAkB,EAAE,oBAAoB;CACzC;;AEXD,AAAA,OAAO,CAAC;EACN,UAAU,EDAH,OAAO;ECCd,MAAM,EAAE,GAAG,CAAC,KAAK,CDEZ,OAAO;ECDZ,UAAU,EAAE,UAAU;EACtB,UAAU,EAAE,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,yBAAyB;EACjD,aAAa,EAAE,GAAG;CACnB",
+    "sources": [
+        "../sass/main.scss",
+        "../sass/resets/_mixins.scss",
+        "../sass/resets/_resets.scss",
+        "../sass/resets/_variables.scss",
+        "../sass/resets/_buttons.scss",
+        "../sass/resets/_fonts.scss",
+        "../sass/components/_view.scss",
+        "../sass/components/_sort.scss",
+        "../sass/components/_tasks.scss",
+        "../sass/components/_addtask.scss"
+    ],
+    "names": [],
+    "file": "main.css"
+}
