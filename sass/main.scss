@@ -1,0 +1,11 @@
+// Mixins & resets
+
+@import "./resets/mixins";
+@import "./resets/fonts";
+
+// Components
+
+@import "./components/view";
+@import "./components/sort";
+@import "./components/tasks";
+@import "./components/addtask";
