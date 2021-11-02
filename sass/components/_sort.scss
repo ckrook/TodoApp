@@ -1,6 +1,9 @@
 #sort {
-  button {
+  label {
+    font-weight: 600;
+  }
+  select {
     @extend .button;
-    width: 100%;
+    padding: 8px;
   }
 }

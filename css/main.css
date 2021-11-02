@@ -7,7 +7,7 @@
   padding: 0;
 }
 
-.button, #view .active, #sort button {
+.button, #view .active, #sort select {
   background: #fcfcfc;
   border: 1px solid #cccccc;
   -webkit-box-sizing: border-box;
@@ -53,7 +53,11 @@ p {
   color: #3b82f6;
 }
 
-#sort button {
-  width: 100%;
+#sort label {
+  font-weight: 600;
+}
+
+#sort select {
+  padding: 8px;
 }
 /*# sourceMappingURL=main.css.map */
