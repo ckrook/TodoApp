@@ -1,0 +1,13 @@
+#view {
+  background-color: $light-grey;
+  border-radius: 8px;
+  padding: 10px;
+
+  button {
+    @extend .button;
+    width: 100%;
+    &:target {
+      color: $blue;
+    }
+  }
+}
