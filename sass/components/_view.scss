@@ -4,10 +4,13 @@
   padding: 10px;
 
   button {
-    @extend .button;
+    border: none;
+    background-color: $light-grey;
     width: 100%;
-    &:target {
-      color: $blue;
-    }
+    padding: 5px 0;
+  }
+  .active {
+    @extend .button;
+    color: $blue;
   }
 }

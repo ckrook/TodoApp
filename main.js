@@ -1,15 +1,21 @@
+let listView = document.getElementById("list-view");
+let gridView = document.getElementById("grid-view");
+
 window.onload = function () {
-  getCurrentLocation();
+  listView.addEventListener("click", toggleView);
+  gridView.addEventListener("click", toggleView);
 };
 
-function getCurrentLocation() {
-  window.navigator.geolocation.getCurrentPosition(success, error);
+function toggleView(e) {
+  if (e.target.id == "list-view") {
+    e.target.classList.add("active");
+    gridView.classList.remove("active");
+  }
+  if (e.target.id == "grid-view") {
+    e.target.classList.add("active");
+    listView.classList.remove("active");
+  }
 }
 
-function success(e) {
-  console.log(e);
-}
-
-function error(e) {
-  console.log(e);
-}
+// listView.classList.add("active");
+// gridView.classList.remove("active");
