@@ -1,0 +1,44 @@
+#addtask {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .collapsed {
+    @extend .button;
+    background-color: $white;
+    cursor: pointer;
+    position: fixed;
+    font-weight: 600;
+    left: 50%;
+    bottom: -7%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    padding: 30px;
+    border-radius: 50px;
+    text-align: center;
+  }
+  input {
+    @extend .button;
+    width: 100%;
+    padding: 15px;
+  }
+  select {
+    @extend .button;
+    width: 100%;
+    padding: 15px;
+  }
+  button {
+    background-color: $blue;
+    color: $white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0px 15px 15px 0px;
+  }
+  .todo-text {
+    background-color: $light-blue;
+    color: $dark;
+    border: none;
+    box-shadow: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}

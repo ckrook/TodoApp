@@ -1,4 +1,4 @@
-.button, #view .active, #sort select {
+.button, #view .active, #sort select, #addtask .collapsed, #addtask input, #addtask select {
   background: #fcfcfc;
   border: 1px solid #cccccc;
   -webkit-box-sizing: border-box;
@@ -90,5 +90,58 @@ p {
 
 #tasks .task .priority {
   font-size: 0.8em;
+}
+
+#addtask {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#addtask .collapsed {
+  background-color: #ffffff;
+  cursor: pointer;
+  position: fixed;
+  font-weight: 600;
+  left: 50%;
+  bottom: -7%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 95%;
+  padding: 30px;
+  border-radius: 50px;
+  text-align: center;
+}
+
+#addtask input {
+  width: 100%;
+  padding: 15px;
+}
+
+#addtask select {
+  width: 100%;
+  padding: 15px;
+}
+
+#addtask button {
+  background-color: #3b82f6;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 0px 15px 15px 0px;
+}
+
+#addtask .todo-text {
+  background-color: #eff6ff;
+  color: #373737;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 /*# sourceMappingURL=main.css.map */
