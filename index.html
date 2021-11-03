@@ -76,15 +76,18 @@
             </div>
           </div>
         </div>
+
         <div id="addtask">
-          <div class="collapsed">
+          <div class="collapsed wrap">
             <form action="" id="form">
               <div class="container">
                 <div class="row mb-3">
                   <div class="col-6">
+                    <label for="deadline">Deadline</label>
                     <input type="date" value="" />
                   </div>
                   <div class="col-6">
+                    <label for="priority">Priority</label>
                     <select id="priority">
                       <option value="High">High</option>
                       <option value="Medium">Medium</option>
@@ -93,7 +96,11 @@
                   </div>
                 </div>
                 <div class="d-flex">
-                  <input class="todo-text" type="text" />
+                  <input
+                    class="todo-text"
+                    type="text"
+                    placeholder="Add your task here..."
+                  />
                   <button>Add</button>
                 </div>
               </div>

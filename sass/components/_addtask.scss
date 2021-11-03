@@ -1,20 +1,21 @@
 #addtask {
   width: 100%;
-  display: flex;
-  justify-content: center;
+  bottom: 3%;
+  right: 0;
+  left: 0;
+  position: fixed;
   .collapsed {
     @extend .button;
+    margin: 20px;
     background-color: $white;
     cursor: pointer;
-    position: fixed;
     font-weight: 600;
-    left: 50%;
-    bottom: -7%;
-    transform: translate(-50%, -50%);
-    width: 95%;
     padding: 30px;
     border-radius: 50px;
-    text-align: center;
+  }
+  .wrap {
+    width: 460px;
+    margin: 0 auto;
   }
   input {
     @extend .button;

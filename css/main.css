@@ -94,27 +94,24 @@ p {
 
 #addtask {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  bottom: 3%;
+  right: 0;
+  left: 0;
+  position: fixed;
 }
 
 #addtask .collapsed {
+  margin: 20px;
   background-color: #ffffff;
   cursor: pointer;
-  position: fixed;
   font-weight: 600;
-  left: 50%;
-  bottom: -7%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  width: 95%;
   padding: 30px;
   border-radius: 50px;
-  text-align: center;
+}
+
+#addtask .wrap {
+  width: 460px;
+  margin: 0 auto;
 }
 
 #addtask input {
