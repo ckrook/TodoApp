@@ -84,7 +84,7 @@
                 <div class="row mb-3">
                   <div class="col-6">
                     <label for="deadline">Deadline</label>
-                    <input type="date" value="" />
+                    <input id="deadline" type="date" value="" />
                   </div>
                   <div class="col-6">
                     <label for="priority">Priority</label>
@@ -97,11 +97,12 @@
                 </div>
                 <div class="d-flex">
                   <input
+                    id="todo-text"
                     class="todo-text"
                     type="text"
                     placeholder="Add your task here..."
                   />
-                  <button>Add</button>
+                  <button id="submit">Add</button>
                 </div>
               </div>
             </form>
