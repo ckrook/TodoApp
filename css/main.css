@@ -14,7 +14,7 @@ body {
   -webkit-transition: all 0.5s ease-in-out;
 }
 
-.button, #view button, #sort button {
+.button, #view .active, #sort button {
   background: #fcfcfc;
   border: 1px solid #cccccc;
   -webkit-box-sizing: border-box;
@@ -50,10 +50,13 @@ p {
 }
 
 #view button {
+  border: none;
+  background-color: #f2f4f5;
   width: 100%;
+  padding: 5px 0;
 }
 
-#view button:target {
+#view .active {
   color: #3b82f6;
 }
 
