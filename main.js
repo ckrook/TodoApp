@@ -9,17 +9,36 @@ class todo {
   }
 }
 
+const prioScale = ["Low", "Medium", "High"];
+
 let listView = document.getElementById("list-view");
 let gridView = document.getElementById("grid-view");
-
-//submit todo
-let todoArray = [];
+let sortBy = document.getElementById("sortview");
 let submit = document.getElementById("submit");
+let taskWrapper = document.getElementById("tasks");
+let input = document.getElementById("todo-text");
+let todoArray = [];
 
 window.onload = function () {
   listView.addEventListener("click", toggleView);
   gridView.addEventListener("click", toggleView);
   submit.addEventListener("click", submitTodo);
+  input.addEventListener("keyup", function (event) {
+    // console.log("helo");
+    event.preventDefault();
+    if (event.key === "Enter") {
+      console.log("helo");
+      return submit.submitTodo();
+    }
+  });
+  sortBy.addEventListener("change", changeSortBy);
+  taskWrapper.addEventListener("click", (event) => {
+    const isInput = event.target.nodeName === "INPUT";
+    if (!isInput) {
+      return;
+    }
+    removeTodos(event);
+  });
 };
 
 function toggleView(e) {
@@ -51,6 +70,59 @@ function submitTodo() {
   console.log(todoArray);
 
   let tasks = document.getElementById("tasks");
+  printTodos(todoArray);
+}
+
+// Sort feature
+
+function changeSortBy() {
+  return this.value == "newest"
+    ? sortByNewest()
+    : this.value == "deadline"
+    ? sortByDeadline()
+    : this.value == "alphabetical"
+    ? sortByAlphabetical()
+    : this.value == "priority"
+    ? sortByPriority()
+    : null;
+
+  function sortByNewest() {
+    todoArray.sort(function (a, b) {
+      return new Date(a.created) - new Date(b.created);
+    });
+    printTodos(todoArray);
+  }
+  function sortByDeadline() {
+    todoArray.sort(function (a, b) {
+      return new Date(a.deadline) - new Date(b.deadline);
+    });
+    printTodos(todoArray);
+  }
+  function sortByPriority() {
+    todoArray.sort(function (a, b) {
+      return b.priority - a.priority;
+    });
+    printTodos(todoArray);
+  }
+  function sortByAlphabetical() {
+    todoArray.sort(function (a, b) {
+      if (a.text.toLowerCase() < b.text.toLowerCase()) return -1;
+      if (a.text.toLowerCase() > b.text.toLowerCase()) return 1;
+      return 0;
+    });
+    printTodos(todoArray);
+  }
+}
+
+function removeTodos(event) {
+  let tempId = event.target.id.split("-").pop().trim();
+  tempId = parseInt(tempId);
+  todoArray.splice(tempId, 1);
+  printTodos(todoArray);
+}
+
+function printTodos(todoArray) {
+  tasks.innerHTML = "";
   let tempTodo = ``;
   for (i = 0; i < todoArray.length; i++) {
     tempTodo = `
@@ -67,21 +139,16 @@ function submitTodo() {
 		    </div>
 
         <div class="col-3 d-flex align-items-end">
-          <span class="priority ${todoArray[i].priority}">${todoArray[i].priority}</span>
+          <span class="priority ${prioScale[
+            parseInt(todoArray[i].priority) - 1
+          ].toLowerCase()}">${
+      prioScale[parseInt(todoArray[i].priority) - 1]
+    }</span>
         </div>
 
  	    </div>
     </div>
     `;
+    tasks.innerHTML += tempTodo;
   }
-  tasks.innerHTML += tempTodo;
-}
-
-// remove todo item
-let checkbox = document.getElementsByClassName("checkmark");
-
-console.log(checkbox[0]);
-
-function removeTodo(e) {
-  console.log(e);
 }
