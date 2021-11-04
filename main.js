@@ -15,14 +15,30 @@ let listView = document.getElementById("list-view");
 let gridView = document.getElementById("grid-view");
 let sortBy = document.getElementById("sortview");
 let submit = document.getElementById("submit");
-
+let taskWrapper = document.getElementById("tasks");
+let input = document.getElementById("todo-text");
 let todoArray = [];
 
 window.onload = function () {
   listView.addEventListener("click", toggleView);
   gridView.addEventListener("click", toggleView);
   submit.addEventListener("click", submitTodo);
+  input.addEventListener("keyup", function (event) {
+    // console.log("helo");
+    event.preventDefault();
+    if (event.key === "Enter") {
+      console.log("helo");
+      return submit.submitTodo();
+    }
+  });
   sortBy.addEventListener("change", changeSortBy);
+  taskWrapper.addEventListener("click", (event) => {
+    const isInput = event.target.nodeName === "INPUT";
+    if (!isInput) {
+      return;
+    }
+    removeTodos(event);
+  });
 };
 
 function toggleView(e) {
@@ -66,6 +82,8 @@ function changeSortBy() {
     ? sortByDeadline()
     : this.value == "alphabetical"
     ? sortByAlphabetical()
+    : this.value == "priority"
+    ? sortByPriority()
     : null;
 
   function sortByNewest() {
@@ -80,12 +98,12 @@ function changeSortBy() {
     });
     printTodos(todoArray);
   }
-
-  // todoArray.sort(function (a, b) {
-  //   return b.priority - a.priority;
-  // });
-  // printTodos(todoArray);
-
+  function sortByPriority() {
+    todoArray.sort(function (a, b) {
+      return b.priority - a.priority;
+    });
+    printTodos(todoArray);
+  }
   function sortByAlphabetical() {
     todoArray.sort(function (a, b) {
       if (a.text.toLowerCase() < b.text.toLowerCase()) return -1;
@@ -94,6 +112,13 @@ function changeSortBy() {
     });
     printTodos(todoArray);
   }
+}
+
+function removeTodos(event) {
+  let tempId = event.target.id.split("-").pop().trim();
+  tempId = parseInt(tempId);
+  todoArray.splice(tempId, 1);
+  printTodos(todoArray);
 }
 
 function printTodos(todoArray) {
