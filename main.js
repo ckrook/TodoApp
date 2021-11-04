@@ -9,6 +9,8 @@ class todo {
   }
 }
 
+let prioScale = ["Low", "Medium", "High"];
+
 let listView = document.getElementById("list-view");
 let gridView = document.getElementById("grid-view");
 let sortBy = document.getElementById("sortview");
@@ -111,7 +113,11 @@ function printTodos(todoArray) {
 		    </div>
 
         <div class="col-3 d-flex align-items-end">
-          <span class="priority ${todoArray[i].priority}">${todoArray[i].priority}</span>
+          <span class="priority ${prioScale[
+            parseInt(todoArray[i].priority) - 1
+          ].toLowerCase()}">${
+      prioScale[parseInt(todoArray[i].priority) - 1]
+    }</span>
         </div>
 
  	    </div>
