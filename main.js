@@ -9,15 +9,14 @@ class todo {
   }
 }
 
-let prioScale = ["Low", "Medium", "High"];
+const prioScale = ["Low", "Medium", "High"];
 
 let listView = document.getElementById("list-view");
 let gridView = document.getElementById("grid-view");
 let sortBy = document.getElementById("sortview");
-
-//submit todo
-let todoArray = [];
 let submit = document.getElementById("submit");
+
+let todoArray = [];
 
 window.onload = function () {
   listView.addEventListener("click", toggleView);
@@ -70,11 +69,23 @@ function changeSortBy() {
     : null;
 
   function sortByNewest() {
-    console.log("hello");
+    todoArray.sort(function (a, b) {
+      return new Date(a.created) - new Date(b.created);
+    });
+    printTodos(todoArray);
   }
   function sortByDeadline() {
-    console.log("hello2");
+    todoArray.sort(function (a, b) {
+      return new Date(a.deadline) - new Date(b.deadline);
+    });
+    printTodos(todoArray);
   }
+
+  // todoArray.sort(function (a, b) {
+  //   return b.priority - a.priority;
+  // });
+  // printTodos(todoArray);
+
   function sortByAlphabetical() {
     todoArray.sort(function (a, b) {
       if (a.text.toLowerCase() < b.text.toLowerCase()) return -1;
@@ -83,16 +94,6 @@ function changeSortBy() {
     });
     printTodos(todoArray);
   }
-}
-
-function compare(a, b) {
-  if (a.text < b.text) {
-    return -1;
-  }
-  if (a.text > b.text) {
-    return 1;
-  }
-  return 0;
 }
 
 function printTodos(todoArray) {
