@@ -11,6 +11,7 @@ class todo {
 
 let listView = document.getElementById("list-view");
 let gridView = document.getElementById("grid-view");
+let sortBy = document.getElementById("sortview");
 
 //submit todo
 let todoArray = [];
@@ -20,6 +21,7 @@ window.onload = function () {
   listView.addEventListener("click", toggleView);
   gridView.addEventListener("click", toggleView);
   submit.addEventListener("click", submitTodo);
+  sortBy.addEventListener("change", changeSortBy);
 };
 
 function toggleView(e) {
@@ -51,6 +53,48 @@ function submitTodo() {
   console.log(todoArray);
 
   let tasks = document.getElementById("tasks");
+  printTodos(todoArray);
+}
+
+// Sort feature
+
+function changeSortBy() {
+  return this.value == "newest"
+    ? sortByNewest()
+    : this.value == "deadline"
+    ? sortByDeadline()
+    : this.value == "alphabetical"
+    ? sortByAlphabetical()
+    : null;
+
+  function sortByNewest() {
+    console.log("hello");
+  }
+  function sortByDeadline() {
+    console.log("hello2");
+  }
+  function sortByAlphabetical() {
+    todoArray.sort(function (a, b) {
+      if (a.text.toLowerCase() < b.text.toLowerCase()) return -1;
+      if (a.text.toLowerCase() > b.text.toLowerCase()) return 1;
+      return 0;
+    });
+    printTodos(todoArray);
+  }
+}
+
+function compare(a, b) {
+  if (a.text < b.text) {
+    return -1;
+  }
+  if (a.text > b.text) {
+    return 1;
+  }
+  return 0;
+}
+
+function printTodos(todoArray) {
+  tasks.innerHTML = "";
   let tempTodo = ``;
   for (i = 0; i < todoArray.length; i++) {
     tempTodo = `
@@ -73,21 +117,6 @@ function submitTodo() {
  	    </div>
     </div>
     `;
+    tasks.innerHTML += tempTodo;
   }
-  tasks.innerHTML += tempTodo;
-}
-
-// Sort feature
-
-let sort = document.getElementById("sortview").value;
-console.log(sort);
-
-function compare(a, b) {
-  if (a.text < b.text) {
-    return -1;
-  }
-  if (a.text > b.text) {
-    return 1;
-  }
-  return 0;
 }
