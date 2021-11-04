@@ -77,11 +77,17 @@ function submitTodo() {
   tasks.innerHTML += tempTodo;
 }
 
-// remove todo item
-let checkbox = document.getElementsByClassName("checkmark");
+// Sort feature
 
-console.log(checkbox[0]);
+let sort = document.getElementById("sortview").value;
+console.log(sort);
 
-function removeTodo(e) {
-  console.log(e);
+function compare(a, b) {
+  if (a.text < b.text) {
+    return -1;
+  }
+  if (a.text > b.text) {
+    return 1;
+  }
+  return 0;
 }
