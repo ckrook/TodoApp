@@ -28,7 +28,7 @@ window.onload = function () {
     event.preventDefault();
     if (event.key === "Enter") {
       console.log("helo");
-      return submit.submitTodo();
+      return submitTodo();
     }
   });
   sortBy.addEventListener("change", changeSortBy);
