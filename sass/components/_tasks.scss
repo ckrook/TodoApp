@@ -19,5 +19,17 @@
     .priority {
       font-size: 0.8em;
     }
+    .high {
+      background-color: $red;
+      color: $dark-red;
+    }
+    .medium {
+      background-color: $yellow;
+      color: $dark-yellow;
+    }
+    .low {
+      background-color: $green;
+      color: $dark-green;
+    }
   }
 }
