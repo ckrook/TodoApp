@@ -65,7 +65,8 @@ p {
   padding: 8px;
 }
 
-#tasks .task {
+#tasks .task,
+#tasksdone .task {
   background-color: #ffffff;
   padding: 8px;
   -webkit-box-shadow: 0px 0px 50px 1px #f5f5f5;
@@ -73,7 +74,8 @@ p {
   border-radius: 15px;
 }
 
-#tasks .task .checkmark {
+#tasks .task .checkmark,
+#tasksdone .task .checkmark {
   background: #ffffff;
   border: 3px solid #3b82f6;
   -webkit-box-sizing: border-box;
@@ -84,27 +86,42 @@ p {
   background-color: #eee;
 }
 
-#tasks .task time {
+#tasks .task time,
+#tasksdone .task time {
   font-size: 0.8em;
 }
 
-#tasks .task .priority {
+#tasks .task .priority,
+#tasksdone .task .priority {
   font-size: 0.8em;
 }
 
-#tasks .task .high {
+#tasks .task .high,
+#tasksdone .task .high {
   background-color: #fca5a5;
   color: #b91c1c;
 }
 
-#tasks .task .medium {
+#tasks .task .medium,
+#tasksdone .task .medium {
   background-color: #fde68a;
   color: #d97706;
 }
 
-#tasks .task .low {
+#tasks .task .low,
+#tasksdone .task .low {
   background-color: #6ee7b7;
   color: #059669;
+}
+
+#tasks .crossed,
+#tasksdone .crossed {
+  text-decoration: line-through;
+}
+
+#tasks .statusdone,
+#tasksdone .statusdone {
+  background-color: #f2f4f5;
 }
 
 #addtask {

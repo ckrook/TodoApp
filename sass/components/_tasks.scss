@@ -1,4 +1,5 @@
-#tasks {
+#tasks,
+#tasksdone {
   .task {
     background-color: $white;
     padding: 8px;
@@ -31,5 +32,11 @@
       background-color: $green;
       color: $dark-green;
     }
+  }
+  .crossed {
+    text-decoration: line-through;
+  }
+  .statusdone {
+    background-color: $light-grey;
   }
 }
