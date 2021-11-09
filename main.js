@@ -25,6 +25,8 @@ window.onload = function () {
   let storedTodo = localStorage.getItem("todo");
   storedTodo = JSON.parse(storedTodo);
   if (storedTodo != null) {
+    console.log(storedTodo);
+    todoArray = storedTodo;
     printTodos(storedTodo);
   } else {
   }
@@ -40,26 +42,27 @@ window.onload = function () {
     }
   });
   sortBy.addEventListener("change", changeSortBy);
-  // taskWrapper.addEventListener("click", (event) => {
-  //   const isInput = event.target.nodeName === "INPUT";
-  //   if (!isInput) {
-  //     return;
-  //   }
-  //   removeTodos(event);
-  // });
 };
 
 function toggleView(e) {
   if (e.target.id == "list-view") {
     e.target.classList.add("active");
     gridView.classList.remove("active");
+    // let tempTasks = document.querySelectorAll(".task");
+    // console.log(tempTasks);
+    // tempTasks.forEach((element) => {
+    //   element.classList.remove("col-4");
+    // });
   }
   if (e.target.id == "grid-view") {
     e.target.classList.add("active");
     listView.classList.remove("active");
-    taskWrapper.classList.add("container");
-
-    task.classList.add("col-4");
+    // taskWrapper.classList.add("container");
+    // let tempTasks = document.querySelectorAll(".task");
+    // console.log(tempTasks);
+    // tempTasks.forEach((element) => {
+    //   element.classList.add("col-4");
+    // });
   }
 }
 
