@@ -149,7 +149,7 @@ function removeTodos(event) {
 }
 
 function printTodos(todoArray) {
-  tasks.innerHTML = "";
+  taskWrapper.innerHTML = "";
   tasksDone.innerHTML = "";
   let tempTodo = ``;
   let tempTodo2 = ``;
@@ -211,21 +211,22 @@ function printTodos(todoArray) {
     `;
       tasks.innerHTML += tempTodo;
     }
-    document.querySelectorAll(".checkmark").forEach((item) => {
-      item.addEventListener("click", (event) => {
-        let tempId = event.target.id.split("-").pop().trim();
-        if (todoArray[tempId].done == true) {
-          todoArray[tempId].done = false;
-          saveLocalstorage(todoArray);
-          printTodos(todoArray);
-        } else {
-          saveLocalstorage(todoArray);
-          removeTodos(event);
-        }
-      });
-    });
+
     saveLocalstorage(todoArray);
   }
+  document.querySelectorAll(".checkmark").forEach((item) => {
+    item.addEventListener("click", (event) => {
+      let tempId = event.target.id.split("-").pop().trim();
+      if (todoArray[tempId].done == true) {
+        todoArray[tempId].done = false;
+        saveLocalstorage(todoArray);
+        printTodos(todoArray);
+      } else {
+        saveLocalstorage(todoArray);
+        removeTodos(event);
+      }
+    });
+  });
 }
 
 function saveLocalstorage(todoArray) {
