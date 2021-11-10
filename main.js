@@ -10,7 +10,6 @@ class todo {
 }
 
 const prioScale = ["Low", "Medium", "High"];
-
 let listView = document.getElementById("list-view");
 let gridView = document.getElementById("grid-view");
 let sortBy = document.getElementById("sortview");
@@ -22,27 +21,31 @@ let input = document.getElementById("todo-text");
 let todoArray = [];
 
 window.onload = function () {
-  let storedTodo = localStorage.getItem("todo");
-  storedTodo = JSON.parse(storedTodo);
-  if (storedTodo != null) {
-    console.log(storedTodo);
-    todoArray = storedTodo;
-    printTodos(storedTodo);
-  } else {
-  }
-
+  fromLocalstorage();
   listView.addEventListener("click", toggleView);
   gridView.addEventListener("click", toggleView);
   submit.addEventListener("click", submitTodo);
-  input.addEventListener("keyup", function (event) {
-    // console.log("helo");
-    event.preventDefault();
-    if (event.key === "Enter") {
-      return submitTodo();
-    }
-  });
+  input.addEventListener("keyup", pressEnter);
   sortBy.addEventListener("change", changeSortBy);
 };
+
+function fromLocalstorage() {
+  let storedTodo = localStorage.getItem("todo");
+  storedTodo = JSON.parse(storedTodo);
+  if (storedTodo) {
+    todoArray = storedTodo;
+    printTodos(todoArray);
+  }
+}
+
+function pressEnter(event) {
+  event.preventDefault();
+  if (event.key === "Enter") {
+    if (input.value) {
+      return submitTodo();
+    }
+  }
+}
 
 function toggleView(e) {
   if (e.target.id == "list-view") {
@@ -113,21 +116,21 @@ function changeSortBy() {
     todoArray.sort(function (a, b) {
       return new Date(a.created) - new Date(b.created);
     });
-    saveLocalstorage(todoArray);
+    toLocalstorage(todoArray);
     printTodos(todoArray);
   }
   function sortByDeadline() {
     todoArray.sort(function (a, b) {
       return new Date(a.deadline) - new Date(b.deadline);
     });
-    saveLocalstorage(todoArray);
+    toLocalstorage(todoArray);
     printTodos(todoArray);
   }
   function sortByPriority() {
     todoArray.sort(function (a, b) {
       return b.priority - a.priority;
     });
-    saveLocalstorage(todoArray);
+    toLocalstorage(todoArray);
     printTodos(todoArray);
   }
   function sortByAlphabetical() {
@@ -136,18 +139,17 @@ function changeSortBy() {
       if (a.text.toLowerCase() > b.text.toLowerCase()) return 1;
       return 0;
     });
-    saveLocalstorage(todoArray);
+    toLocalstorage(todoArray);
     printTodos(todoArray);
   }
 }
 
-function removeTodos(event) {
+function setStatusDone(event) {
   let tempId = event.target.id.split("-").pop().trim();
   tempId = parseInt(tempId);
 
   todoArray[tempId].done = true;
-  // todoArray.splice(tempId, 1);
-  saveLocalstorage(todoArray);
+  toLocalstorage(todoArray);
   printTodos(todoArray);
 }
 
@@ -179,7 +181,7 @@ function printTodos(todoArray) {
           </div>
   
           <div class="col-3 d-flex align-items-end">
-            <a class="priority delete">Remove</a>
+            <a id="delete-${i}" class="priority delete">Remove</a>
           </div>
   
          </div>
@@ -215,23 +217,37 @@ function printTodos(todoArray) {
       tasks.innerHTML += tempTodo;
     }
 
-    saveLocalstorage(todoArray);
+    toLocalstorage(todoArray);
   }
   document.querySelectorAll(".checkmark").forEach((item) => {
     item.addEventListener("click", (event) => {
       let tempId = event.target.id.split("-").pop().trim();
       if (todoArray[tempId].done == true) {
         todoArray[tempId].done = false;
-        saveLocalstorage(todoArray);
+        toLocalstorage(todoArray);
         printTodos(todoArray);
       } else {
-        saveLocalstorage(todoArray);
-        removeTodos(event);
+        toLocalstorage(todoArray);
+        setStatusDone(event);
       }
+    });
+  });
+  document.querySelectorAll(".delete").forEach((thing) => {
+    thing.addEventListener("click", (event) => {
+      console.log(event.target);
+      let tempId = event.target.id.split("-").pop().trim();
+      deleteItem(tempId);
     });
   });
 }
 
-function saveLocalstorage(todoArray) {
+function deleteItem(tempId) {
+  console.log("helo");
+  todoArray.splice(tempId, 1);
+  toLocalstorage(todoArray);
+  printTodos(todoArray);
+}
+
+function toLocalstorage(todoArray) {
   localStorage.setItem("todo", JSON.stringify(todoArray));
 }
