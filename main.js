@@ -37,7 +37,6 @@ function fromLocalstorage() {
     printTodos(todoArray);
   }
 }
-
 function pressEnter(event) {
   event.preventDefault();
   if (event.key === "Enter") {
@@ -46,30 +45,16 @@ function pressEnter(event) {
     }
   }
 }
-
 function toggleView(e) {
   if (e.target.id == "list-view") {
     e.target.classList.add("active");
     gridView.classList.remove("active");
-    // let tempTasks = document.querySelectorAll(".task");
-    // console.log(tempTasks);
-    // tempTasks.forEach((element) => {
-    //   element.classList.remove("col-4");
-    // });
   }
   if (e.target.id == "grid-view") {
     e.target.classList.add("active");
     listView.classList.remove("active");
-    // taskWrapper.classList.add("container");
-    // let tempTasks = document.querySelectorAll(".task");
-    // console.log(tempTasks);
-    // tempTasks.forEach((element) => {
-    //   element.classList.add("col-4");
-    // });
   }
 }
-
-// Add todo item
 
 function submitTodo() {
   let text = document.getElementById("todo-text").value;
@@ -98,8 +83,6 @@ function submitTodo() {
   document.getElementById("todo-text").value = "";
   printTodos(todoArray);
 }
-
-// Sort feature
 
 function changeSortBy() {
   return this.value == "newest"
@@ -147,7 +130,6 @@ function changeSortBy() {
 function setStatusDone(event) {
   let tempId = event.target.id.split("-").pop().trim();
   tempId = parseInt(tempId);
-
   todoArray[tempId].done = true;
   toLocalstorage(todoArray);
   printTodos(todoArray);
@@ -170,20 +152,16 @@ function printTodos(todoArray) {
       tempTodo2 = `
       <div class="task mb-2 ${statusdone}">
         <div class="row">
-  
           <div class="col-2 d-flex justify-content-center align-items-center">
             <input id="checkbox-${i}" type="checkbox" class="checkmark" checked/>
           </div>
-  
           <div class="col-7">
             <p class="${crossed}">${todoArray[i].text}</p>
             <time>${todoArray[i].deadline}</time>
           </div>
-  
           <div class="col-3 d-flex align-items-end">
             <a id="delete-${i}" class="priority delete">Remove</a>
           </div>
-  
          </div>
       </div>
       `;
@@ -193,16 +171,13 @@ function printTodos(todoArray) {
       tempTodo = `
     <div class="task mb-2 ${statusdone}">
 	    <div class="row">
-
         <div class="col-2 d-flex justify-content-center align-items-center">
           <input id="checkbox-${i}" type="checkbox" class="checkmark" />
         </div>
-
 		    <div class="col-7">
 		    	<p class="${crossed}">${todoArray[i].text}</p>
 			    <time>${todoArray[i].deadline}</time>
 		    </div>
-
         <div class="col-3 d-flex align-items-end">
           <span class="priority ${prioScale[
             parseInt(todoArray[i].priority) - 1
@@ -234,7 +209,6 @@ function printTodos(todoArray) {
   });
   document.querySelectorAll(".delete").forEach((thing) => {
     thing.addEventListener("click", (event) => {
-      console.log(event.target);
       let tempId = event.target.id.split("-").pop().trim();
       deleteItem(tempId);
     });
@@ -242,7 +216,6 @@ function printTodos(todoArray) {
 }
 
 function deleteItem(tempId) {
-  console.log("helo");
   todoArray.splice(tempId, 1);
   toLocalstorage(todoArray);
   printTodos(todoArray);
