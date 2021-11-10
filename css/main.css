@@ -19,7 +19,7 @@ input[type="checkbox"] {
 .priority {
   background: #fca5a5;
   color: #b91c1c;
-  padding: 2px 30px;
+  padding: 2px 15px;
   border-radius: 5px;
 }
 
@@ -76,6 +76,7 @@ p {
 
 #tasks .task .checkmark,
 #tasksdone .task .checkmark {
+  cursor: pointer;
   background: #ffffff;
   border: 3px solid #3b82f6;
   -webkit-box-sizing: border-box;
@@ -93,7 +94,7 @@ p {
 
 #tasks .task .priority,
 #tasksdone .task .priority {
-  font-size: 0.8em;
+  font-size: 0.7em;
 }
 
 #tasks .task .high,
@@ -122,6 +123,16 @@ p {
 #tasks .statusdone,
 #tasksdone .statusdone {
   background-color: #f2f4f5;
+}
+
+#tasks .delete,
+#tasksdone .delete {
+  cursor: pointer;
+}
+
+#tasks .delete:hover,
+#tasksdone .delete:hover {
+  color: #373737;
 }
 
 #addtask {
