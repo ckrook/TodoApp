@@ -1,3 +1,9 @@
+.wrapper {
+  @include for-tablet-portrait-up {
+    max-width: 500px;
+  }
+}
+
 #tasks,
 #tasksdone {
   .task {

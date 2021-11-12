@@ -65,6 +65,12 @@ p {
   padding: 8px;
 }
 
+@media (min-width: 600px) {
+  .wrapper {
+    max-width: 500px;
+  }
+}
+
 #tasks .task,
 #tasksdone .task {
   background-color: #ffffff;
