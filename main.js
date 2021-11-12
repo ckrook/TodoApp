@@ -10,8 +10,6 @@ class todo {
 }
 
 const prioScale = ["Low", "Medium", "High"];
-let listView = document.getElementById("list-view");
-let gridView = document.getElementById("grid-view");
 let sortBy = document.getElementById("sortview");
 let submit = document.getElementById("submit");
 let taskWrapper = document.getElementById("tasks");
@@ -22,8 +20,6 @@ let todoArray = [];
 
 window.onload = function () {
   fromLocalstorage();
-  listView.addEventListener("click", toggleView);
-  gridView.addEventListener("click", toggleView);
   submit.addEventListener("click", submitTodo);
   input.addEventListener("keyup", pressEnter);
   sortBy.addEventListener("change", changeSortBy);
@@ -43,16 +39,6 @@ function pressEnter(event) {
     if (input.value) {
       return submitTodo();
     }
-  }
-}
-function toggleView(e) {
-  if (e.target.id == "list-view") {
-    e.target.classList.add("active");
-    gridView.classList.remove("active");
-  }
-  if (e.target.id == "grid-view") {
-    e.target.classList.add("active");
-    listView.classList.remove("active");
   }
 }
 
