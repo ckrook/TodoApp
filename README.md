@@ -18,3 +18,6 @@ This because Tailwind is widly used in the industry.<br>
 ### Testing
 With test driven developing getting more important these days, I built my tests using Cypress.
 This was I could make sure that the app passed key tests before I deployed it as finished.
+
+
+You can checkout this project <a href="https://todo.charleskrook.io/" target="_blank">here</a>.
