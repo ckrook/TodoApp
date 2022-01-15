@@ -3,7 +3,8 @@
     font-weight: 600;
   }
   select {
-    @extend .button;
+    color: white;
+    background-color: #111827;
     padding: 8px;
   }
 }

@@ -7,9 +7,9 @@
 #tasks,
 #tasksdone {
   .task {
-    background-color: $white;
+    background-color: white;
     padding: 8px;
-    box-shadow: 0px 0px 50px 1px #f5f5f5;
+    color: black;
     border-radius: 15px;
     .checkmark {
       cursor: pointer;
@@ -44,12 +44,14 @@
     text-decoration: line-through;
   }
   .statusdone {
-    background-color: $light-grey;
+    background-color: #1f2937;
   }
   .delete {
     cursor: pointer;
+    font-weight: 600;
+    color: white;
     &:hover {
-      color: $dark;
+      color: #1f2937;
     }
   }
 }

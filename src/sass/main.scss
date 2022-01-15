@@ -1,0 +1,35 @@
+// Mixins & resets
+@import "./resets/mixins";
+@import "./resets/fonts";
+
+// Components
+@import "./components/view";
+@import "./components/sort";
+@import "./components/tasks";
+@import "./components/addtask";
+
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.wrapper {
+  width: 500px;
+  margin: 0 auto;
+  @include for-phone-only {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+.container {
+  @include for-phone-only {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+footer {
+  width: inherit;
+}

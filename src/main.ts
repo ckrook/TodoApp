@@ -1,4 +1,10 @@
 class todo {
+  id: number;
+  text: string;
+  priority: string;
+  created: string;
+  deadline: string;
+  done: boolean;
   constructor(id, text, priority, currentDate, deadline) {
     this.id = id;
     this.text = text;
@@ -15,13 +21,13 @@ let submit = document.getElementById("submit");
 let taskWrapper = document.getElementById("tasks");
 let tasksDone = document.getElementById("tasksdone");
 let task = document.getElementsByClassName("task");
-let input = document.getElementById("todo-text");
+let input = document.getElementById("todo-text") as HTMLInputElement;
 let todoArray = [];
 
 window.onload = function () {
   fromLocalstorage();
   submit.addEventListener("click", submitTodo);
-  input.addEventListener("keyup", pressEnter);
+  // input.addEventListener("keyup", pressEnter);
   sortBy.addEventListener("change", changeSortBy);
 };
 
@@ -29,7 +35,7 @@ function fromLocalstorage() {
   let storedTodo = localStorage.getItem("todo");
   storedTodo = JSON.parse(storedTodo);
   if (storedTodo) {
-    todoArray = storedTodo;
+    let todoArray = storedTodo;
     printTodos(todoArray);
   }
 }
@@ -37,14 +43,17 @@ function pressEnter(event) {
   event.preventDefault();
   if (event.key === "Enter") {
     if (input.value) {
-      return submitTodo();
+      return submitTodo(event);
     }
   }
 }
 
-function submitTodo() {
-  let text = document.getElementById("todo-text").value;
-  let deadLine = document.getElementById("deadline").value;
+function submitTodo(event) {
+  event.preventDefault();
+  let text = (document.getElementById("todo-text") as HTMLInputElement).value;
+  if (!text) return;
+  let deadLine = (document.getElementById("deadline") as HTMLInputElement)
+    .value;
   let today = new Date();
   let currentDate =
     today.getFullYear() +
@@ -58,15 +67,15 @@ function submitTodo() {
     today.getMinutes() +
     ":" +
     today.getSeconds();
-  let priority =
-    document.getElementById("priority").options[
-      document.getElementById("priority").selectedIndex
-    ].value;
+  let priority = (document.getElementById("priority") as HTMLSelectElement)
+    .options[
+    (document.getElementById("priority") as HTMLSelectElement).selectedIndex
+  ].value;
   let id = todoArray.length;
   let temp = new todo(id, text, priority, currentDate, deadLine);
-  todoArray.push(temp);
 
-  document.getElementById("todo-text").value = "";
+  todoArray.push(temp);
+  (document.getElementById("todo-text") as HTMLInputElement).value = "";
   printTodos(todoArray);
 }
 
@@ -83,14 +92,14 @@ function changeSortBy() {
 
   function sortByNewest() {
     todoArray.sort(function (a, b) {
-      return new Date(a.created) - new Date(b.created);
+      return (new Date(a.created) as any) - (new Date(b.created) as any);
     });
     toLocalstorage(todoArray);
     printTodos(todoArray);
   }
   function sortByDeadline() {
     todoArray.sort(function (a, b) {
-      return new Date(a.deadline) - new Date(b.deadline);
+      return (new Date(a.deadline) as any) - (new Date(b.deadline) as any);
     });
     toLocalstorage(todoArray);
     printTodos(todoArray);
@@ -129,7 +138,7 @@ function printTodos(todoArray) {
   if (todoArray.filter((e) => e.done === true).length > 0) {
     tasksDone.innerHTML = "<span>Completed</span>";
   }
-  for (i = 0; i < todoArray.length; i++) {
+  for (let i = 0; i < todoArray.length; i++) {
     let statusdone = "";
     let crossed = "";
     if (todoArray[i].done === true) {
@@ -141,12 +150,12 @@ function printTodos(todoArray) {
           <div class="col-2 d-flex justify-content-center align-items-center">
             <input id="checkbox-${i}" type="checkbox" class="checkmark" checked/>
           </div>
-          <div class="col-7">
-            <p class="${crossed}">${todoArray[i].text}</p>
+          <div class="col-7 text-white">
+            <p class="${crossed} ">${todoArray[i].text}</p>
             <time>${todoArray[i].deadline}</time>
           </div>
           <div class="col-3 d-flex align-items-end">
-            <a id="delete-${i}" class="priority delete">Remove</a>
+            <a id="delete-${i}" class="priority delete bg-red-500">Remove</a>
           </div>
          </div>
       </div>
@@ -175,14 +184,14 @@ function printTodos(todoArray) {
  	    </div>
     </div>
     `;
-      tasks.innerHTML += tempTodo;
+      taskWrapper.innerHTML += tempTodo;
     }
 
     toLocalstorage(todoArray);
   }
   document.querySelectorAll(".checkmark").forEach((item) => {
     item.addEventListener("click", (event) => {
-      let tempId = event.target.id.split("-").pop().trim();
+      let tempId = (event.target as any).id.split("-").pop().trim();
       if (todoArray[tempId].done == true) {
         todoArray[tempId].done = false;
         toLocalstorage(todoArray);
@@ -195,7 +204,7 @@ function printTodos(todoArray) {
   });
   document.querySelectorAll(".delete").forEach((thing) => {
     thing.addEventListener("click", (event) => {
-      let tempId = event.target.id.split("-").pop().trim();
+      let tempId = (event.target as any).id.split("-").pop().trim();
       deleteItem(tempId);
     });
   });

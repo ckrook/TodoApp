@@ -1,0 +1,231 @@
+.button, #view .active {
+  background: #fcfcfc;
+  border: 1px solid #cccccc;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 0px 3px 5px rgba(194, 194, 194, 0.25);
+          box-shadow: 0px 3px 5px rgba(194, 194, 194, 0.25);
+  border-radius: 8px;
+}
+
+input[type="checkbox"] {
+  background: #ffffff;
+  border: 3px solid #3b82f6;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.priority {
+  background: #fca5a5;
+  color: #b91c1c;
+  padding: 2px 15px;
+  border-radius: 5px;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #fcfcfc;
+}
+
+p {
+  margin-bottom: 0em;
+}
+
+#view {
+  background-color: #f2f4f5;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+#view button {
+  border: none;
+  background-color: #f2f4f5;
+  width: 100%;
+  padding: 5px 0;
+}
+
+#view .active {
+  color: #3b82f6;
+}
+
+#sort label {
+  font-weight: 600;
+}
+
+#sort select {
+  color: white;
+  background-color: #111827;
+  padding: 8px;
+}
+
+@media (min-width: 600px) {
+  .wrapper {
+    max-width: 500px;
+  }
+}
+
+#tasks .task,
+#tasksdone .task {
+  background-color: white;
+  padding: 8px;
+  color: black;
+  border-radius: 15px;
+}
+
+#tasks .task .checkmark,
+#tasksdone .task .checkmark {
+  cursor: pointer;
+  background: #ffffff;
+  border: 3px solid #3b82f6;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 28px;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+#tasks .task time,
+#tasksdone .task time {
+  font-size: 0.8em;
+}
+
+#tasks .task .priority,
+#tasksdone .task .priority {
+  font-size: 0.7em;
+}
+
+#tasks .task .high,
+#tasksdone .task .high {
+  background-color: #fca5a5;
+  color: #b91c1c;
+}
+
+#tasks .task .medium,
+#tasksdone .task .medium {
+  background-color: #fde68a;
+  color: #d97706;
+}
+
+#tasks .task .low,
+#tasksdone .task .low {
+  background-color: #6ee7b7;
+  color: #059669;
+}
+
+#tasks .crossed,
+#tasksdone .crossed {
+  text-decoration: line-through;
+}
+
+#tasks .statusdone,
+#tasksdone .statusdone {
+  background-color: #1f2937;
+}
+
+#tasks .delete,
+#tasksdone .delete {
+  cursor: pointer;
+  font-weight: 600;
+  color: white;
+}
+
+#tasks .delete:hover,
+#tasksdone .delete:hover {
+  color: #1f2937;
+}
+
+#addtask .wrap {
+  width: 460px;
+  margin: 0 auto;
+}
+
+#addtask input {
+  background-color: #374151;
+  color: #f9fafb;
+  width: 100%;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+#addtask input::-webkit-input-placeholder {
+  color: #f9fafb;
+}
+
+#addtask input:-ms-input-placeholder {
+  color: #f9fafb;
+}
+
+#addtask input::-ms-input-placeholder {
+  color: #f9fafb;
+}
+
+#addtask input::placeholder {
+  color: #f9fafb;
+}
+
+#addtask select {
+  background-color: #374151;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  color: #f9fafb;
+  width: 100%;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+#addtask select::-webkit-input-placeholder {
+  color: #f9fafb;
+}
+
+#addtask select:-ms-input-placeholder {
+  color: #f9fafb;
+}
+
+#addtask select::-ms-input-placeholder {
+  color: #f9fafb;
+}
+
+#addtask select::placeholder {
+  color: #f9fafb;
+}
+
+#addtask button {
+  background-color: #10b981;
+  color: #f9fafb;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 0px 15px 15px 0px;
+}
+
+#addtask .todo-text {
+  background-color: #374151;
+  color: #f9fafb;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.wrapper {
+  width: 500px;
+  margin: 0 auto;
+}
+/*# sourceMappingURL=main.css.map */
