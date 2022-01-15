@@ -1,5 +1,7 @@
 # TodoApp
 
+Checkout the project live <a href="https://todo.charleskrook.io/" target="_blank">here</a>.
+
 ### Summary
 This a minimalistic Todo App I built as part of a school project in November 2021.
 
@@ -19,5 +21,3 @@ This because Tailwind is widly used in the industry.<br>
 With test driven developing getting more important these days, I built my tests using Cypress.<br>
 This was I could make sure that the app passed key tests before I deployed it as finished.
 
-
-You can checkout this project <a href="https://todo.charleskrook.io/" target="_blank">here</a>.
