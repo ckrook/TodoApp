@@ -16,7 +16,7 @@ When it comes to styling my choice of framework was Tailwind. <br>
 This because Tailwind is widly used in the industry.<br>
 
 ### Testing
-With test driven developing getting more important these days, I built my tests using Cypress.
+With test driven developing getting more important these days, I built my tests using Cypress.<br>
 This was I could make sure that the app passed key tests before I deployed it as finished.
 
 
