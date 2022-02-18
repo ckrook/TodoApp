@@ -5,6 +5,9 @@ Checkout the project live <a href="https://todo.charleskrook.io/" target="_blank
 ### Summary
 This a minimalistic Todo App I built as part of a school project in November 2021.
 
+### Preview
+![](todoapp.gif)
+
 ### Objectives
 The objectives where to build a simple todo app <br>with the possibility to sort the todos by **deadline**, **priority** and **alphabetical**.<br>
 The end user also needed to be able to mark the todos as **done** as well as **delete** them.
